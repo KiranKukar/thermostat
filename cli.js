@@ -12,12 +12,27 @@ const rl = readline.createInterface({
 
 const tempController = () => {
   rl.question('Enter command > ', (change) => {
-    if (change === "off") {
-      return console.log("Thanks for using our thermostat")
-    } else if (change === "up") {
-      thermostat.up();
-    } else {
-      thermostat.down();
+    switch (change) {
+      case 'up':
+        thermostat.up();
+        break;
+      case 'down':
+        thermostat.down();
+        break;
+      case 'psm on':
+        thermostat.setPowerSavingMode(true);
+        break;
+      case 'psm off':
+        thermostat.setPowerSavingMode(false);
+        break;
+      case 'reset':
+        thermostat.reset();
+        break;
+      case 'usage':
+        console.log(thermostat.getUsage());
+        break;
+      case 'off':
+        return console.log("Thanks for using our thermostat");
     }
     console.log(thermostat.getTemperature());
     tempController()

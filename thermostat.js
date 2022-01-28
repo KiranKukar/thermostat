@@ -5,7 +5,12 @@ class Thermostat {
   }
 
   getTemperature() {
-    return this.temperature;
+    if (this.temperature === this.maxTemp) {
+      this.max_message = ' (maximum reached'
+    } else {
+      this.max_message = ''
+    }
+    return console.log(`Temperature is ${this.temperature}${this.max_message}`);
   }
 
   up() {
